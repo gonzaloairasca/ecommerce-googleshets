@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "@/components/layout/Layout";
-import { useCart, useCartMutations } from "@/store/Cart";
+import { usarCarrito, cartMutations } from "@/store/Cart";
 import CartItemList from "@/components/CartItemList/CartItemList";
 
 const cart = () => {
-  const { items, count } = useCart();
-  const { removeFromCart } = useCartMutations();
+  const { items, count } = usarCarrito();
+  const { removeFromCart } = cartMutations();
 
   return (
     <Layout>

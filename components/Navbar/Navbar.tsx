@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Link from "next/link";
-import { useCart } from "@/store/Cart";
+import { usarCarrito } from "@/store/Cart";
 
 function Navbar() {
-  const { count: cartCount } = useCart();
+  const { count: cartCount } = usarCarrito();
 
   return (
     <header className="flex justify-between  bg-slate-400 items-center h-20 headerNav">

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useCartMutations } from "../../store/Cart";
+import { cartMutations } from "../../store/Cart";
 import { Input, Icon, Transition } from "semantic-ui-react";
 import { Product } from "@/types";
 
@@ -26,7 +26,7 @@ const AddToCart = ({ product }: AddToCartProps) => {
   const [error, setError] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [visible, setVisible] = useState(false);
-  const { addToCart } = useCartMutations();
+  const { addToCart } = cartMutations();
 
   const toggleMessage = () => {
     setTimeout(() => {

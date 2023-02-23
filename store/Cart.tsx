@@ -98,7 +98,7 @@ const getCartCount = (sum: number, item: CartItemType) => sum + item.quantity;
  * exposed without actually provinding access to the Context itself :)
  * https://kentcdodds.com/blog/how-to-use-react-context-effectively
  */
-export const useCart = () => {
+export const usarCarrito = () => {
   const itemsById = useContext(CartItemsContext);
   const items = Object.values(itemsById);
   // Not familiar with Array.reduce? :)
@@ -113,7 +113,7 @@ export const useCart = () => {
     subTotal,
   };
 };
-export const useCartMutations = () => {
+export const cartMutations = () => {
   const dispatch = useContext(CartDispatchContext);
 
   const addToCart = (product: Product, quantity?: number) =>
