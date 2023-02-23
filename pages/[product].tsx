@@ -1,30 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 import Layout from "@/components/layout/Layout";
 import { Product } from "@/types";
-import Papa from "papaparse";
 import Carrousel from "@/components/Carrousel/Carrousel";
 import AddToCart from "@/components/Cart/AgregarAlCarrito";
+import { GetStaticProps } from "next";
+import api from "./api/api";
 
-export const getServerSideProps = async () => {
-  const products = await axios
-    .get(
-      "https://docs.google.com/spreadsheets/d/e/2PACX-1vTU6fDPVr0HMxo5DbowRMfVPhS1TBFqGW8v2XwfzNTAF7aoY_JSQLwolW4pTOonKz78RL4S3uu3n4T_/pub?output=csv",
-      {
-        responseType: "blob",
-      }
-    )
-    .then((response) => {
-      return new Promise<Product[]>((resolve, reject) => {
-        Papa.parse(response.data, {
-          header: true,
-          complete: (results) => resolve(results.data as Product[]),
-          error: (error) => reject(error.message),
-        });
-      });
-    });
+export async function getStaticPaths() {
+  const products = await api.list();
+
+  const paths = products.map((product) => {
+    return {
+      params: { product: `${product.title}` },
+    };
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const products = await api.list();
   return {
     props: {
       products,
