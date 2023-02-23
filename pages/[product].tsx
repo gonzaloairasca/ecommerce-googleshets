@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -42,6 +42,10 @@ const Product: React.FC<Props> = ({ products }) => {
   const singleProduct = products.find(
     (element: Product) => element.title === product
   );
+
+  if (router.isFallback) {
+    return <div>Cargando...</div>;
+  }
 
   return (
     <Layout>
