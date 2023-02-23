@@ -4,7 +4,7 @@ import { Input, Icon, Transition } from "semantic-ui-react";
 import { Product } from "@/types";
 
 type AddToCartProps = {
-  product: Product;
+  product: Product | undefined;
 };
 
 // Fake a server Response, we don't care on this project
@@ -42,7 +42,7 @@ const AddToCart = ({ product }: AddToCartProps) => {
       setLoading(true);
       addToCartRequest()
         .then(() => {
-          addToCart(product, quantity);
+          addToCart(product!, quantity);
           setLoading(false);
           setQuantity(quantity);
           setVisible(true);

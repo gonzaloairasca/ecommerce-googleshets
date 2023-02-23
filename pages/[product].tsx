@@ -35,10 +35,10 @@ export const getServerSideProps = async () => {
 export interface Props {
   products: Product[];
 }
-const Product = ({ products }: Props) => {
+const Product: React.FC<Props> = ({ products }) => {
   const router = useRouter();
   const { product } = router.query;
-  const singleProduct: Product = products.find(
+  const singleProduct = products.find(
     (element: Product) => element.title === product
   );
 
@@ -46,12 +46,12 @@ const Product = ({ products }: Props) => {
     <Layout>
       <div className="mt-20">
         <Carrousel
-          img={singleProduct.image}
-          imgDos={singleProduct.secondImage}
+          img={singleProduct!.image}
+          imgDos={singleProduct!.secondImage}
         />
         <div className="p-5">
-          <h1 className="capitalize">{singleProduct.title}</h1>
-          <p>{singleProduct.description}</p>
+          <h1 className="capitalize">{singleProduct!.title}</h1>
+          <p>{singleProduct!.description}</p>
         </div>
         <AddToCart product={singleProduct} />
       </div>
