@@ -11,25 +11,30 @@ import api from "./api/api";
 export async function getStaticPaths() {
   const products = await api.list();
 
-  const paths = products.map((product) => {
-    return {
-      params: { product: `${product.title}` },
-    };
-  });
+  // const paths = products.map((product) => {
+  //   return {
+  //     params: { product: `${product.title}` },
+  //   };
+
+  // });
 
   return {
-    paths,
-    fallback: true,
+    paths: [
+      { params: { product: "remera-celeste" } },
+      { params: { product: "remera-dos" } },
+      { params: { product: "item-tres" } },
+    ],
+    fallback: "blocking",
   };
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const products = await api.list();
+  console.log(`Static site generation for ${params!.product}`);
   return {
     props: {
       products,
     },
-    revalidate: 10,
   };
 };
 
@@ -42,10 +47,6 @@ const Product: React.FC<Props> = ({ products }) => {
   const singleProduct = products.find(
     (element: Product) => element.title === product
   );
-
-  if (router.isFallback) {
-    return <div>Cargando...</div>;
-  }
 
   return (
     <Layout>
