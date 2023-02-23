@@ -11,19 +11,19 @@ import api from "./api/api";
 export async function getStaticPaths() {
   const products = await api.list();
 
-  // const paths = products.map((product) => {
-  //   return {
-  //     params: { product: `${product.title}` },
-  //   };
-
-  // });
+  const paths = products.map((product) => {
+    return {
+      params: { product: `${product.title}` },
+    };
+  });
 
   return {
-    paths: [
-      { params: { product: "remera-celeste" } },
-      { params: { product: "remera-dos" } },
-      { params: { product: "item-tres" } },
-    ],
+    // paths: [
+    //   { params: { product: "remera-celeste" } },
+    //   { params: { product: "remera-dos" } },
+    //   { params: { product: "item-tres" } },
+    // ],
+    paths,
     fallback: "blocking",
   };
 }
