@@ -11,7 +11,7 @@ function Navbar() {
       <Link href="/">
         <img
           className="h-14"
-          src="http://d3ugyf2ht6aenh.cloudfront.net/stores/002/258/941/themes/common/logo-1802041699-1657027423-10f57b70f752c85309aec61b86d603fb1657027423.png?0"
+          src="https://d3ugyf2ht6aenh.cloudfront.net/stores/002/258/941/themes/common/logo-1802041699-1657027423-10f57b70f752c85309aec61b86d603fb1657027423.png?0"
           alt="Logo tienda"
         />
       </Link>
