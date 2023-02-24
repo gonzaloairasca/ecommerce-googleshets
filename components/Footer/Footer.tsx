@@ -8,7 +8,7 @@ function Footer() {
     >
       <p>
         Desarrollado por{" "}
-        <a href="gonzaloairascaweb.com.ar">Gonzalo Airasca Web</a>
+        <a href="https://gonzaloairascaweb.com.ar">Gonzalo Airasca Web</a>
       </p>
     </footer>
   );
