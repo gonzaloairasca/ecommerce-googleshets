@@ -58,7 +58,7 @@ const CartItemList = ({
       {/* <Item.Group divided items={mapCartItemsToItems(items)} as="section" /> */}
       {items.map((item) => (
         <>
-          <div className="flex pt-4 px-1">
+          <div className="flex pt-4 px-1 ">
             <div className="m-1">
               <img className=" w-32" src={item.image} alt={item.title} />
             </div>

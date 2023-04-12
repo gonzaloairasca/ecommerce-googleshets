@@ -56,7 +56,10 @@ const Carrousel = ({ img, imgDos }: Props) => {
     <div className="">
       <Zoom {...zoomInProperties}>
         {images.map((each, index) => (
-          <div key={index} className="flex justify-center m-3 h-full">
+          <div
+            key={index}
+            className="flex justify-center m-3 h-full lg:w-8/12 "
+          >
             <img className=" object-cover shadow-xl" src={each} />
           </div>
         ))}

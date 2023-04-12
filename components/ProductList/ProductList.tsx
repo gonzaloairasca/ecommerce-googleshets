@@ -9,17 +9,23 @@ interface Props {
 
 const ProductList = ({ productos }: Props) => (
   <>
-    <div className="flex flex-wrap mt-20">
-      {productos.map((product: Product, index: number) => (
-        <Link key={index} href={`/${product.title}`} className="w-3/6">
-          <Card
-            image={product.image}
-            title={product.title}
-            description={product.description}
-            price={product.price}
-          />
-        </Link>
-      ))}
+    <div className="container m-auto mt-20">
+      <div className="flex flex-wrap  mt-10 ">
+        {productos.map((product: Product, index: number) => (
+          <Link
+            key={index}
+            href={`/${product.title}`}
+            className="w-3/6 lg:w-4/12"
+          >
+            <Card
+              image={product.image}
+              title={product.title}
+              description={product.description}
+              price={product.price}
+            />
+          </Link>
+        ))}
+      </div>
     </div>
   </>
 );
